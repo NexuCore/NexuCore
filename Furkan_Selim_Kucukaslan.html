@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>furkan's cool website</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #007bff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .description {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 20px 0;
+            font-weight: 300;
+            white-space: pre-wrap; /* Preserves whitespace and line breaks */
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .social-media {
+            margin: 30px 0;
+        }
+        .social-media a {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .social-media img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s;
+        }
+        .social-media img:hover {
+            transform: scale(1.1);
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 1em;
+            color: #666;
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Personal Website</h1>
+        <p id="description" class="description"></p>
+        
+        <div class="social-media">
+            <a href="https://www.youtube.com/@NexuCoreCompany" target="_blank" title="YouTube">
+                <img src="youtube.png" alt="YouTube">
+            </a>
+            <a href="https://www.roblox.com/users/2292063386/profile" target="_blank" title="Roblox">
+                <img src="roblox.png" alt="Roblox">
+            </a>
+            <a href="https://whatsapp.com/channel/0029ValVRR5FCCoXFE6fzF0e " target="_blank" title="WhatsApp Channel">
+                <img src="whatsapp.png" alt="WhatsApp">
+            </a>
+            <a href="https://github.com/NexuCore" target="_blank" title="GitHub">
+                <img src="github.png" alt="GitHub">
+            </a>
+            <a href="https://discord.gg/4MMWzSyqzW" target="_blank" title="Discord">
+                <img src="discord.png" alt="Discord">
+            </a>
+        </div>
+        
+        <footer>
+            <p>Thank you for visiting!</p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:nexucorecompany@gmail.com">nexucorecompany@gmail.com</a></p>
+                <p>Phone: +49 1590 1364991</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function typeWriter(elementId, text, speed) {
+            const element = document.getElementById(elementId);
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    element.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Replace with your actual text
+        const text = `Hello, I'm Furkan Selim Kucukaslan.\n I'm the founder of NexuCore and the mind behind several innovative AI technologies, including BobIsAI.\n My passion for artificial intelligence and software development has guided my career and inspired the creation of NexuCore.\n  My journey in technology began with a simple yet profound idea: to develop robust, efficient, and user-friendly AI applications.\n This mission drove me to establish NexuCore, a company that stands at the pinnacle of excellence and innovation.\n Under my leadership, we've launched various groundbreaking AI tools such as BobIsAI, PenguinBot, and VoidAI.\n  Coding isn't just my profession; it's my passion.\n It’s this relentless drive to push the boundaries of AI that keeps me constantly evolving.\n Leading a team of talented individuals who share my vision has been one of the most rewarding aspects of my career.\n  Beyond development, my role extends into the strategic realms of NexuCore, ensuring we remain at the forefront of technological advancements.\n Striving for perfection and paying attention to the finest details, I've dedicated myself to making significant contributions to the tech industry.\n  Thank you for your interest in our work.\n If you have any questions or need further information, feel free to reach out!`;
+
+        // Call the typeWriter function with the ID of the description element
+        typeWriter('description', text, 50); // Adjust speed as needed
+    </script>
+</body>
+</html>
