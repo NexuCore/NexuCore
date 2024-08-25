@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>furkan's cool website</title>
+    <title>Furkan's Cool Website</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <style>
         body {
@@ -34,7 +34,7 @@
             line-height: 1.6;
             margin: 20px 0;
             font-weight: 300;
-            white-space: pre-wrap; /* Preserves whitespace and line breaks */
+            white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
             vertical-align: top;
@@ -54,6 +54,22 @@
         .social-media img:hover {
             transform: scale(1.1);
         }
+        .wiki-button {
+            margin-top: 20px;
+        }
+        .wiki-button a {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .wiki-button a:hover {
+            background-color: #0056b3;
+        }
         footer {
             margin-top: 30px;
             font-size: 1em;
@@ -71,6 +87,11 @@
     <div class="container">
         <h1>Welcome to My Personal Website</h1>
         <p id="description" class="description"></p>
+
+        <!-- Wikipedia Button -->
+        <div class="wiki-button">
+            <a href="https://nexucore.github.io/NexuCore-Wikipedia/" target="_blank">Visit our own Wikipedia</a>
+        </div>
         
         <div class="social-media">
             <a href="https://www.youtube.com/@NexuCoreCompany" target="_blank" title="YouTube">
@@ -115,11 +136,9 @@
             type();
         }
 
-        // Replace with your actual text
         const text = `Hello, I'm Furkan Selim Kucukaslan.\n I'm the founder of NexuCore and the mind behind several innovative AI technologies, including BobIsAI.\n My passion for artificial intelligence and software development has guided my career and inspired the creation of NexuCore.\n  My journey in technology began with a simple yet profound idea: to develop robust, efficient, and user-friendly AI applications.\n This mission drove me to establish NexuCore, a company that stands at the pinnacle of excellence and innovation.\n Under my leadership, we've launched various groundbreaking AI tools such as BobIsAI, PenguinBot, and VoidAI.\n  Coding isn't just my profession; it's my passion.\n It’s this relentless drive to push the boundaries of AI that keeps me constantly evolving.\n Leading a team of talented individuals who share my vision has been one of the most rewarding aspects of my career.\n  Beyond development, my role extends into the strategic realms of NexuCore, ensuring we remain at the forefront of technological advancements.\n Striving for perfection and paying attention to the finest details, I've dedicated myself to making significant contributions to the tech industry.\n  Thank you for your interest in our work.\n If you have any questions or need further information, feel free to reach out!`;
 
-        // Call the typeWriter function with the ID of the description element
-        typeWriter('description', text, 50); // Adjust speed as needed
+        typeWriter('description', text, 50);
     </script>
 </body>
 </html>
