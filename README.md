@@ -27,12 +27,6 @@ NexuCore is a team of innovative developers and creators, founded by Furkan Seli
 * [Wikipedia Page](https://nexucore.github.io/NexuCore-Wikipedia)
 * [Twitter/X Account](https://x.com/NexuCore)
 
-**Contact Information:**
-
-* Furkan Selim Kucukaslan: +49 1590 1364991
-* Reynaldo: +49 176 64132761
-* Dorcioman Alexander: +40 740 339 797
-
 **Note:**
 
 We, at NexuCore, value our community and strive to maintain a positive and respectful environment. Therefore, we have established some guidelines to ensure a safe and enjoyable experience for all users:
