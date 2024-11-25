@@ -1,98 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furkan's Cool Website</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <style>
+        /* Global Styles */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f4f8;
-            color: #333;
+            background-color: #f8f9fa;
+            color: #343a40;
             text-align: center;
+            scroll-behavior: smooth;
         }
+
+        /* Container and Layout */
         .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             color: #007bff;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             text-transform: uppercase;
             font-weight: 600;
         }
+
         .description {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin: 25px 0;
             font-weight: 300;
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
             vertical-align: top;
         }
-        .social-media {
-            margin: 30px 0;
+
+        /* Button and Link Styling */
+        .btn {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 12px 25px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
         }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .social-media {
+            margin: 35px 0;
+        }
+
         .social-media a {
             display: inline-block;
-            margin: 0 10px;
+            margin: 0 12px;
         }
+
         .social-media img {
-            width: 40px;
-            height: 40px;
-            transition: transform 0.3s;
+            width: 45px;
+            height: 45px;
+            transition: transform 0.3s, filter 0.3s;
         }
+
         .social-media img:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
+            filter: brightness(1.2);
         }
-        .wiki-button {
-            margin-top: 20px;
+
+        /* GitHub Stats Section */
+        .github-stats {
+            margin: 50px 0;
+            padding: 30px;
+            background-color: #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
-        .wiki-button a {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1em;
-            transition: background-color 0.3s;
+
+        .github-stats h2 {
+            font-size: 2.2em;
+            color: #495057;
+            margin-bottom: 25px;
         }
-        .wiki-button a:hover {
-            background-color: #0056b3;
+
+        .github-stats img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+
+        .github-stats img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
         footer {
-            margin-top: 30px;
+            margin-top: 40px;
+            padding: 20px 0;
+            background-color: #f1f3f5;
             font-size: 1em;
-            color: #666;
+            color: #868e96;
+            border-top: 1px solid #dee2e6;
         }
+
         .contact-info {
-            margin-top: 20px;
+            margin-top: 10px;
         }
+
         .contact-info p {
-            margin: 5px 0;
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                margin: 30px 10px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .github-stats h2 {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Welcome to My Personal Website</h1>
         <p id="description" class="description"></p>
 
-        <!-- Wikipedia Button -->
-        <div class="wiki-button">
-            <a href="https://nexucore.github.io/NexuCore-Wikipedia/" target="_blank">Visit our own Wikipedia</a>
+        <!-- GitHub Stats Section -->
+        <div class="github-stats">
+            <h2>My GitHub Stats</h2>
+            <img src="https://github-readme-stats.vercel.app/api?username=FurkanSelimKucukaslan&show_icons=true&theme=light"
+                alt="GitHub Stats">
         </div>
-        
+
+        <!-- Wikipedia Button -->
+        <div>
+            <a href="https://nexucore.github.io/NexuCore-Wikipedia/" class="btn" target="_blank">Visit our own Wikipedia</a>
+        </div>
+
+        <!-- Social Media Icons -->
         <div class="social-media">
             <a href="https://www.youtube.com/@NexuCoreCompany" target="_blank" title="YouTube">
                 <img src="youtube.png" alt="YouTube">
@@ -100,7 +176,7 @@
             <a href="https://www.roblox.com/users/2292063386/profile" target="_blank" title="Roblox">
                 <img src="roblox.png" alt="Roblox">
             </a>
-            <a href="https://whatsapp.com/channel/0029ValVRR5FCCoXFE6fzF0e " target="_blank" title="WhatsApp Channel">
+            <a href="https://whatsapp.com/channel/0029ValVRR5FCCoXFE6fzF0e" target="_blank" title="WhatsApp Channel">
                 <img src="whatsapp.png" alt="WhatsApp">
             </a>
             <a href="https://github.com/NexuCore" target="_blank" title="GitHub">
@@ -110,7 +186,8 @@
                 <img src="discord.png" alt="Discord">
             </a>
         </div>
-        
+
+        <!-- Footer with Contact Info -->
         <footer>
             <p>Thank you for visiting!</p>
             <div class="contact-info">
@@ -131,7 +208,7 @@
                     setTimeout(type, speed);
                 }
             }
-            
+
             type();
         }
 
@@ -140,4 +217,5 @@
         typeWriter('description', text, 50);
     </script>
 </body>
+
 </html>
