@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NexuCore">
+    <meta name="keywords" content="Welcome to the home page of innovations!">
+    <link rel="icon" href="https://nexucore.github.io/NexuCore/assets/logo111.png" type="image/png">
     <title>NexuCore - Innovative AI Solutions</title>
     <style>
         /* Reset and Base Styles */
@@ -838,7 +841,7 @@
             <div class="hero-image">
                 <div class="hero-image-container">
                     <div class="hero-image-bg"></div>
-                    <img src="https://nexucore.github.io/NexuCore/assets/photo1.png" alt="NexuCore AI Interface" class="hero-image-main">
+                    <img id="yourFrameId" src="https://nexucore.github.io/NexuCore/assets/photo1.png" alt="NexuCore AI Interface" class="hero-image-main">
                 </div>
             </div>
         </div>
@@ -1044,6 +1047,29 @@
             }
         });
 
+        function handleFrameVisibility() {
+        const frame = document.getElementById('yourFrameId'); // Replace with your frame's ID
+          if (!frame) return;
+
+    // Check if screen width is less than 768px (common mobile breakpoint)
+          if (window.innerWidth < 900) {
+       // Remove the frame if it exists
+            if (frame.parentNode) {
+              frame.parentNode.removeChild(frame);
+            }
+          } else {
+        // For larger screens, ensure the frame exists
+        // If you need to recreate it, you would do that here
+          console.log('Large screen detected - frame should be visible');
+          }
+        }
+
+// Run on initial load
+        document.addEventListener('DOMContentLoaded', handleFrameVisibility);
+
+// Run when window is resized
+        window.addEventListener('resize', handleFrameVisibility);
+        
         document.getElementById('get-started-today').addEventListener('click', function() {
             // List of 3 websites to choose from
             const websites = [
