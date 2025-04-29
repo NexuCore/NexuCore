@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexuCore - Innovative AI Solutions</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --accent: #00cec9;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(108, 92, 231, 0.95);
+        }
+
+        nav.scrolled a {
+            color: white;
+        }
+
+        nav.scrolled .logo {
+            color: rgb(255, 255, 255);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: rgb(0, 236, 201);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: rgb(0, 236, 201);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0, 206, 201, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.05) 0%, transparent 70%);
+            animation: pulse 15s infinite alternate;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 2rem;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #555;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+            height: 500px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.6s;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-bg {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 0, 255, 0);
+            border-radius: 30px;
+            transform: rotate(45deg);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image-main {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0);
+            animation: float 4s ease-in-out infinite 1s;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 5%;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .feature-card:nth-child(1) {
+            animation: fadeInUp 1s forwards 0.2s;
+        }
+
+        .feature-card:nth-child(2) {
+            animation: fadeInUp 1s forwards 0.4s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation: fadeInUp 1s forwards 0.6s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 8rem 5%;
+            background-color: var(--light);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .product-card:nth-child(1) {
+            animation: fadeInUp 1s forwards 0.2s;
+        }
+
+        .product-card:nth-child(2) {
+            animation: fadeInUp 1s forwards 0.4s;
+        }
+
+        .product-card:nth-child(3) {
+            animation: fadeInUp 1s forwards 0.6s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-content {
+            padding: 2rem;
+        }
+
+        .product-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .product-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .product-tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 8rem 5%;
+            background-color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .team-member:nth-child(1) {
+            animation: fadeInUp 1s forwards 0.2s;
+        }
+
+        .team-member:nth-child(2) {
+            animation: fadeInUp 1s forwards 0.4s;
+        }
+
+        .team-member:nth-child(3) {
+            animation: fadeInUp 1s forwards 0.6s;
+        }
+
+        .team-member:nth-child(4) {
+            animation: fadeInUp 1s forwards 0.8s;
+        }
+
+        .member-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid white;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+
+        .member-social {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(108, 92, 231, 0.8);
+            padding: 0.8rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover .member-social {
+            transform: translateY(0);
+        }
+
+        .member-social a {
+            color: white;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .member-social a:hover {
+            transform: translateY(-3px);
+        }
+
+        .team-member h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .team-member p {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-member .bio {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite alternate;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta .btn {
+            background-color: white;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+
+        .cta .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-col p {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 6rem;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                width: 100%;
+                height: 400px;
+            }
+
+            .hero-image-bg {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .feature-card, .product-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Nexu<span>Core</span></a>
+            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#products">Products</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Innovative Solutions by <span>NexuCore</span></h1>
+                <p>We build cutting-edge technology to enhance your digital experience. Free AI chat, image generation, and our powerful Synax search engine built into the Nexium browser.</p>
+                <div class="cta-buttons">
+                    <a href="#products" class="btn btn-primary">Explore Products</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <div class="hero-image-bg"></div>
+                    <img src="https://nexucore.github.io/NexuCore/assets/photo1.png" alt="NexuCore AI Interface" class="hero-image-main">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Why Choose NexuCore?</h2>
+            <p>We combine cutting-edge technology with user-friendly design to create products that stand out.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Our products are optimized for speed and performance, ensuring you get the best experience without waiting.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Privacy Focused</h3>
+                <p>We respect your privacy. Our products collect minimal data and give you control over your information.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Creative Freedom</h3>
+                <p>Generate stunning images and have meaningful conversations with our advanced AI technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-title">
+            <h2>Our Products</h2>
+            <p>Discover the innovative tools we've created to enhance your digital experience.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://nexucore.github.io/NexuCore/assets/ai1.png" alt="NexuCore AI">
+                </div>
+                <div class="product-content">
+                    <span class="product-tag">AI Technology</span>
+                    <h3>BobIsAI</h3>
+                    <p>Chat with our advanced AIs for free and generate stunning images with simple text prompts. No hidden fees, no subscriptions.</p>
+                    <a href="https://nexucore.github.io/bobisai/BobIsAI.html" class="btn btn-secondary">Try It Now</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://nexucore.github.io/NexuCore/assets/synax.png" alt="Synax Search">
+                </div>
+                <div class="product-content">
+                    <span class="product-tag">Search Engine</span>
+                    <h3>Synax</h3>
+                    <p>Our privacy-focused search engine delivers accurate results without tracking your every move. Find what you need faster.</p>
+                    <a href="https://nexucore.github.io/Synax/" class="btn btn-secondary">Search Now</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://nexucore.github.io/NexuCore/assets/nexium.png" alt="Nexium Browser">
+                </div>
+                <div class="product-content">
+                    <span class="product-tag">Web Browser</span>
+                    <h3>Nexium</h3>
+                    <p>Experience the web like never before with our fast, secure browser powered by the Synax search engine. Built for modern users.</p>
+                    <a href="https://drive.usercontent.google.com/download?id=1iiEw7BAmJ8shrSnO7fiqoOdu39Un4REt&export=download" class="btn btn-secondary">Download</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="section-title">
+            <h2>Meet Our Team</h2>
+            <p>The talented individuals behind NexuCore's innovative products.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://cdn.discordapp.com/avatars/1276936726719496317/031f037e9ab2601fbbe394b1b479de40?size=1024" alt="Alex">
+                </div>
+                <h3>Furkan Selim Kucukaslan</h3>
+                <p>CEO & Founder</p>
+                <p class="bio">Visionary leader with a passion for AI and ethical technology development.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://cdn.discordapp.com/avatars/1356922757484646430/e8bd10ed043a5d92a7f2a3016b5a809b?size=1024" alt="Sam">
+                </div>
+                <h3>Reynaldo Gonzalez Rajasundram</h3>
+                <p>Co-Owner</p>
+                <p class="bio">Helps us to get new project ideas.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://cdn.discordapp.com/avatars/1295357549507379222/699ab2004ed2c53900d8f5696d590c05?size=1024" alt="Taylor">
+                </div>
+                <h3>Ethan Sullivian</h3>
+                <p>UI/UX Designer</p>
+                <p class="bio">Creates beautiful, intuitive interfaces that users love.</p>
+            </div>
+            <div class="team-member">
+              <div class="member-image">
+                  <img src="https://cdn.discordapp.com/avatars/1220813350099751055/a61f00f3a612507e36953d69a01cab9b?size=1024" alt="Jordan">
+              </div>
+              <h3>Ahmet Karatas</h3>
+              <p>Main Programmer</p>
+              <p class="bio">Makes our dream and projects become a reality</p>
+          </div>
+          <div class="team-member">
+            <div class="member-image">
+                <img src="https://cdn.discordapp.com/avatars/1301660756088979659/0d0fd6a07db7e59cb4e59b5d3557ea6b?size=1024" alt="Sam">
+            </div>
+            <h3>Ender Gulden</h3>
+            <p>Programmer</p>
+            <p class="bio">Programs our products, and listens Ahmet Karatas</p>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+              <img src="https://cdn.discordapp.com/avatars/1197103059927568444/4c132da52cb4c364e33f7e6638be2e54?size=1024" alt="Sam">
+          </div>
+          <h3>Dorcioman Alexander</h3>
+          <p>Programmer</p>
+          <p class="bio">Programs our products, and listens Ahmet Karatas</p>
+        </div>
+      <div class="team-member">
+        <div class="member-image">
+            <img src="https://cdn.discordapp.com/avatars/1114526332559302686/81bd443b1d7763905a56dda3866fc8e1?size=1024" alt="Sam">
+        </div>
+        <h3>Emir Arslan</h3>
+        <p>Artist</p>
+        <p class="bio">Draws/Creates icons for our projects.</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+            <img src="https://cdn.discordapp.com/avatars/1194360045610217533/1e18bdb1ba5dd3538eaf59b5ea9198fd?size=1024" alt="Sam">
+        </div>
+        <h3>Maxim Ivanov</h3>
+        <p>Pentester</p>
+        <p class="bio">Protects our servers being hacked.</p>
+      </div>
+      
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="cta-content">
+            <h2>Ready to Experience NexuCore?</h2>
+            <p>Join thousands of users who are already enjoying our free AI chat, image generation, and powerful browsing experience.</p>
+            <a id="get-started-today" class="btn">Join our community!</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>NexuCore</h3>
+                <p>Innovative solutions for the modern world. Free, accessible, and powerful technology for everyone.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Products</h3>
+                <ul class="footer-links">
+                    <li><a href="https://nexucore.github.io/bobisai/BobIsAI.html">BobIsAI</a></li>
+                    <li><a href="https://nexucore.github.io/Synax/">Synax</a></li>
+                    <li><a href="https://drive.usercontent.google.com/download?id=1iiEw7BAmJ8shrSnO7fiqoOdu39Un4REt&export=download">Nexium</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NexuCore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        document.getElementById('get-started-today').addEventListener('click', function() {
+            // List of 3 websites to choose from
+            const websites = [
+                'https://discord.gg/YAxJMB6ZT9'
+            ];
+            
+            // Select a random website from the array
+            const randomSite = websites[Math.floor(Math.random() * websites.length)];
+            
+            // Redirect to the random website
+            window.location.href = randomSite;
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.feature-card, .product-card, .team-member, .section-title, .cta-content');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    const animation = element.style.animation;
+                    if (!animation || animation === 'none') {
+                        // Trigger the animation only if it hasn't been triggered yet
+                        const delay = element.getAttribute('data-delay') || '0s';
+                        element.style.animation = `fadeInUp 1s forwards ${delay}`;
+                    }
+                }
+            });
+        };
+
+        // Initialize animations on load
+        window.addEventListener('load', () => {
+            animateOnScroll();
+        });
+
+        // Check for animations when scrolling
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Intersection Observer for more precise animation triggering
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const delay = element.getAttribute('data-delay') || '0s';
+                        element.style.animation = `fadeInUp 1s forwards ${delay}`;
+                        observer.unobserve(element);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            document.querySelectorAll('.feature-card, .product-card, .team-member, .section-title, .cta-content').forEach(element => {
+                observer.observe(element);
+            });
+        }
+    </script>
+</body>
+</html>
